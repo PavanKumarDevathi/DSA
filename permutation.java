@@ -14,23 +14,11 @@ public class permutations {
             return;
         }
         char ch = up.charAt(0);
-        occurance(p + ch, up.substring(1));
-        occurance(ch + p, up.substring(1));
-    }
-
-    static ArrayList<String> occuranceList(String p, String up) {         // output : [abc, cab, bac, cba, abc, cab, bac, cba]
-        if (up.isEmpty()) {
-            ArrayList<String> list = new ArrayList<String>();
-            list.add(p);
-            return list;
+        for (int i = 0; i <= p.length(); i++) {
+            String f = p.substring(0, i);
+            String s = p.substring(i, p.length());
+            occurance(f + ch + s, up.substring(1));
         }
-        char ch = up.charAt(0);
-
-        ArrayList<String> left = occuranceList(p + ch, up.substring(1));
-        ArrayList<String> right = occuranceList(ch + p, up.substring(1));
-
-        left.addAll(right);
-        return left;
     }
 
 }
